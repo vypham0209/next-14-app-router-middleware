@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --max-bound: 1440px;
+    --site-pad: 80px;
+    --h-header: 80px;
+    --max-content: calc(var(--max-bound) - 2 * var(--site-pad));
+    --max-padding: max(var(--site-pad), calc((100vw - var(--max-content)) / 2));
+    --w-content: min(
+      calc(100vw - 2 * var(--site-pad)),
+      calc(var(--max-bound) - 2 * var(--site-pad))
+    );
+  }
+
+  @media screen and (max-width: 1025px) {
+    :root {
+      --site-pad: 40px;
+    }
+  }
+
+  @media screen and (max-width: 767px) {
+    :root {
+      --h-header: 72px;
+    }
+  }
+
+  @media screen and (max-width: 576px) {
+    :root {
+      --site-pad: 24px;
+    }
+  }
+
+  @font-face {
+    font-family: georgia;
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url('/fonts/georgia.woff2') format('woff2');
+  }
+
+  @font-face {
+    font-family: georgia;
+    font-style: italic;
+    font-weight: 400;
+    font-display: swap;
+    src: url('/fonts/georgia_italic.woff2') format('woff2');
+  }
+}
+
+#CookiebotWidget {
+  display: none !important;
+}
+
+#main {
+  height: 100vh;
+}
+
+@media (max-width: 768px) {
+  #main {
+    height: 100vh;
+    height: 100dvh;
+  }
+}

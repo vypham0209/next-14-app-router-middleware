@@ -1,0 +1,8 @@
+//THIRD PARTY MODULES
+import { ReactElement } from 'react'
+
+const Loading = (): ReactElement => {
+  return <div>Loading</div>
+}
+
+export default Loading

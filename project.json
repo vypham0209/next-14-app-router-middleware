@@ -1,0 +1,95 @@
+{
+  "name": "landing",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/landing",
+  "projectType": "application",
+  "targets": {
+    "clean-next": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": ["rm -rf dist/apps/landing/.next"],
+        "cwd": "./"
+      }
+    },
+    "build": {
+      "executor": "@nx/next:build",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "root": "apps/landing",
+        "outputPath": "dist/apps/landing",
+        "generateLockfile": true
+      },
+      "configurations": {
+        "development": {
+          "outputPath": "apps/landing"
+        },
+        "production": {}
+      },
+      "dependsOn": ["clean-next"]
+    },
+    "move-intl": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "cp -r ./apps/landing/intl ./dist/apps/landing/"
+      }
+    },
+    "dev": {
+      "executor": "@nx/next:server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "landing:build",
+        "dev": true,
+        "port": 2010,
+        "hostname": "0.0.0.0"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "landing:build:development",
+          "dev": true
+        },
+        "production": {
+          "buildTarget": "landing:build:production",
+          "dev": false
+        }
+      }
+    },
+    "start": {
+      "executor": "@nx/next:server",
+      "options": {
+        "buildTarget": "landing:build:production",
+        "dev": false,
+        "port": 2010,
+        "hostname": "0.0.0.0"
+      }
+    },
+    "export": {
+      "executor": "@nx/next:export",
+      "options": {
+        "buildTarget": "landing:build:production"
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "apps/landing/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/landing/**/*.{ts,tsx,js,jsx}"]
+      }
+    }
+  },
+  "tags": []
+}

@@ -1,0 +1,12 @@
+.slick-meal {
+  .slick-slide > div {
+    @apply md:mx-2 mx-1;
+  }
+  .slick-list {
+    @apply md:-mx-2 -ms-1;
+  }
+
+  .slick-track {
+    @apply ms-0;
+  }
+}

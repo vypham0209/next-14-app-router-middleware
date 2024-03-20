@@ -1,0 +1,121 @@
+.ckEditor {
+  @apply md:mt-10 mt-6;
+  & > a {
+    @apply my-4 text-sm text-yel-500 hover:text-yel-500 hover:underline;
+    @apply md:my-6;
+  }
+  & blockquote::before {
+    @apply absolute left-3 top-5 h-8 w-8 bg-[url("/img/policy/Quote.webp")] bg-contain content-[""] md:left-6;
+  }
+  & blockquote > p {
+    @apply mb-0 text-16 font-normal;
+  }
+  & blockquote {
+    @apply font-georgia italic relative my-10 gap-4 space-y-4 border-b-[1px] border-t-[1px] border-solid border-blu-100 py-6 pe-4 ps-12 text-16 text-blu-400 md:pi-20;
+  }
+  & blockquote > figcaption {
+    @apply text-right not-italic;
+  }
+  & h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply mb-2 mt-10 text-blu-400;
+    @apply first:mt-0;
+  }
+  & h1 {
+    @apply text-64;
+  }
+  & h2 {
+    @apply text-48;
+  }
+  & h3 {
+    @apply text-36;
+  }
+  & h4 {
+    @apply text-28;
+  }
+  & h5 {
+    @apply text-24;
+  }
+  & h6 {
+    @apply text-18;
+  }
+  & ol {
+    @apply mb-2 md:mb-4 list-decimal space-y-2 text-14lig text-blu-400;
+    list-style-position: inside;
+    padding: 0;
+
+    & li {
+      @apply text-18 font-light text-blu-400;
+
+      &::marker {
+        @apply text-18 font-medium text-blu-400;
+      }
+
+      & p {
+        &:first-child {
+          @apply contents text-18 font-medium text-blu-400;
+        }
+        &:nth-child(2) {
+          @apply mt-2;
+        }
+        & strong {
+          @apply font-medium;
+        }
+      }
+    }
+  }
+  & ul {
+    @apply list-disc space-y-2 text-18 font-light text-blu-400;
+    list-style-position: inside;
+    padding: 0;
+
+    & li {
+      @apply text-18 font-light text-blu-400 list-none relative pl-3;
+    }
+    & li::before {
+      @apply content-[""] absolute left-0 top-2 rounded-full w-1.25 h-1.25 bg-blu-400;
+
+      & p {
+        &:first-child {
+          @apply contents text-18 font-medium text-blu-400;
+        }
+        &:nth-child(2) {
+          @apply mt-2;
+        }
+        & strong {
+          @apply font-medium;
+        }
+      }
+    }
+  }
+  & p > a:hover,
+  span > a:hover {
+    @apply text-yel-700 underline;
+  }
+  & p > a,
+  span > a {
+    @apply mt-4 text-sm text-yel-500;
+    @apply md:mt-6;
+  }
+  & p,
+  p > span {
+    @apply mb-2 md:mb-4 text-14lig text-blu-400;
+    @apply last:mb-0;
+  }
+  & > p > strong {
+    @apply font-medium;
+  }
+  & figure > figcaption {
+    @apply mb-2 text-14lig text-blu-400 text-center;
+  }
+  & figure.image {
+    @apply grid justify-center;
+  }
+  & figure.image-style-side {
+    @apply float-right max-w-[1/2];
+  }
+}
